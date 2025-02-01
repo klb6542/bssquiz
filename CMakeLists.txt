@@ -10,5 +10,10 @@ find_package(raylib REQUIRED)
 # Set the output directory for the executable
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-add_executable(bssquiz src/main.cpp)
+add_executable(bssquiz
+    src/main.cpp
+    src/textlabel.cpp
+    src/window.cpp
+)
+
 target_link_libraries(bssquiz raylib)

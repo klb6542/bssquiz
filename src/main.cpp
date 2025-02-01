@@ -1,17 +1,31 @@
-#include "button.hpp"
+#include "textlabel.hpp"
 #include "raylib.h"
+#include "window.hpp"
+#include <cmath>
+#include <cstddef>
+
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 450
 
 int main(void) {
-    InitWindow(800, 450, "Bee Swarm Simulator Quiz");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Bee Swarm Simulator Quiz");
 
-    Image image = LoadImage("resources/basic_bee.png");
-    SetWindowIcon(image);
+    Image windowIcon = LoadImage("resources/bee_icon.png");
+    SetWindowIcon(windowIcon);
+
+    Font hwyGothFont = LoadFontEx("resources/HWYGOTH.ttf", 27, NULL, 256);
+    SetTextLineSpacing(16);
+
+    TextLabel* label = new TextLabel("Welcome to the Bee Swarm Simulator Quiz!", hwyGothFont, 26.0f, RED);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
             ClearBackground(RAYWHITE);
+            label->Draw(WindowPosition::CENTER_TOP);
         EndDrawing();
     }
 
+    UnloadFont(hwyGothFont);
+    UnloadImage(windowIcon);
     CloseWindow();
 }

@@ -18,14 +18,10 @@ Button::Button(const char* imagePath, Vector2 position, float scale) {
     Button(imagePath, position, size);
 }
 
-Button::Button(const char* imagePath, Vector2 position)
-    : Button(imagePath, position, 1.0f) {
-}
-
 Button::~Button() {
     UnloadTexture(m_texture);
 }
 
-void Button::Draw() {
+void Button::Draw() const {
     DrawTextureV(m_texture, m_position, WHITE);
 }
