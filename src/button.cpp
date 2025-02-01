@@ -25,3 +25,7 @@ Button::Button(const char* imagePath, Vector2 position)
 Button::~Button() {
     UnloadTexture(m_texture);
 }
+
+void Button::Draw() {
+    DrawTextureV(m_texture, m_position, WHITE);
+}

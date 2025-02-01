@@ -12,6 +12,7 @@ class Button {
         Button(const char* imagePath, Vector2 position, float scale);
         Button(const char* imagePath, Vector2 position);
         ~Button();
+        void Draw();
     private:
         Texture2D m_texture;
         Vector2 m_position;
