@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/bssquiz.dir/link.d CMakeFiles/bssquiz.dir/src/main.cpp.o -o "/home/keegan/Applications/Raylib/BSS Quiz/bssquiz"  /usr/lib/libraylib.so -L/usr/lib -lraylib

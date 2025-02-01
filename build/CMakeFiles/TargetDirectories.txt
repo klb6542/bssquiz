@@ -1,0 +1,3 @@
+/home/keegan/Applications/Raylib/BSS Quiz/build/CMakeFiles/bssquiz.dir
+/home/keegan/Applications/Raylib/BSS Quiz/build/CMakeFiles/edit_cache.dir
+/home/keegan/Applications/Raylib/BSS Quiz/build/CMakeFiles/rebuild_cache.dir
