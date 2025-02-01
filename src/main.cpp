@@ -1,19 +1,17 @@
+#include "button.hpp"
 #include "raylib.h"
 
-int main(void)
-{
-    InitWindow(800, 450, "raylib [core] example - basic window");
+int main(void) {
+    InitWindow(800, 450, "Bee Swarm Simulator Quiz");
 
-    while (!WindowShouldClose())
-    {
+    Image image = LoadImage("resources/basic_bee.png");
+    SetWindowIcon(image);
+
+    while (!WindowShouldClose()) {
         BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawFPS(50, 50);
-            DrawText("Congrats! You created your first window!", 190, 200, 20, RED);
         EndDrawing();
     }
 
     CloseWindow();
-
-    return 0;
 }
