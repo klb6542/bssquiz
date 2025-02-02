@@ -9,6 +9,7 @@ class TextLabel {
         void Draw(WindowPosition windowPosition, Vector2 offset) const;
         void Draw(WindowPosition windowPosition) const;
         void Draw(Vector2 position) const;
+        void SetText(const char* text);
         int GetWidth() const;
         int GetHeight() const;
     private:

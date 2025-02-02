@@ -13,7 +13,10 @@ void TextLabel::Draw(WindowPosition windowPosition, Vector2 offset) const {
     Vector2 position = ConvertToPosition(windowPosition) + offset;
 
     if (IsCentered(windowPosition))
-        position.x -= GetWidth() / 2.0f;
+        position.x -= this->GetWidth() / 2.0f;
+
+    if (IsOnBottom(windowPosition))
+        position.y -= this->GetHeight();
 
     DrawTextEx(*m_font, m_text, position, m_fontSize, m_fontSpacing, m_tint);
 }
@@ -26,6 +29,14 @@ void TextLabel::Draw(Vector2 position) const {
     Draw(WindowPosition::null, position);
 }
 
+void TextLabel::SetText(const char* text) {
+    this->m_text = text;
+}
+
 int TextLabel::GetWidth() const {
     return std::round(MeasureTextEx(*m_font, m_text, m_fontSize, 1.0f).x);
+}
+
+int TextLabel::GetHeight() const {
+    return std::round(MeasureTextEx(*m_font, m_text, m_fontSize, m_fontSpacing).y);
 }

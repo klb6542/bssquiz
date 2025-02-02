@@ -2,13 +2,22 @@
 #include <raylib.h>
 
 Vector2 operator +(const Vector2 other, const Vector2 other2) {
-    return {other.x + other2.x, other.y + other2.y};
+    return Vector2{other.x + other2.x, other.y + other2.y};
 }
 
 bool IsCentered(WindowPosition windowPosition) {
     switch (windowPosition) {
         case CENTER_TOP:
         case CENTER_CENTER:
+        case CENTER_BOTTOM:
+            return true;
+        default:
+            return false;
+    }
+}
+
+bool IsOnBottom(WindowPosition windowPosition) {
+    switch (windowPosition) {
         case CENTER_BOTTOM:
             return true;
         default:
