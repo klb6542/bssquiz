@@ -5,6 +5,8 @@
 #include <cmath>
 #include <cstddef>
 #include <cstring>
+#include <iostream>
+#include <memory>
 #include <string>
 
 #define SCREEN_WIDTH 800
@@ -23,13 +25,18 @@ int main(void) {
     Music music = LoadMusicStream("resources/drone.mp3");
     PlayMusicStream(music);
 
+    // unsafe
     TextLabel* header = new TextLabel("Welcome to the Bee Swarm Simulator Quiz!", hwyGothFont, 26.0f, RED);
     TextLabel* ingameTime = new TextLabel("Time: ", hwyGothFont, 21, BLACK);
 
-    Timer* timer = new Timer(3);
-    timer->WhenDone([&header, &timer]() {
-       header->SetText("Are you ready to begin?");
-       delete timer;
+    std::unique_ptr<Timer> timer(new Timer());
+
+    timer->Start(3.0, [header]() {
+        header->SetText("Are you ready to begin?");
+    });
+
+    timer->Start(6.0, [header]() {
+        header->SetText("Beginning now!");
     });
 
     while (!WindowShouldClose()) {
