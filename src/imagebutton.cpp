@@ -1,7 +1,7 @@
-#include "button.hpp"
+#include "imagebutton.hpp"
 #include <raylib.h>
 
-Button::Button(const char* imagePath, Vector2 position, Size2 size) {
+ImageButton::ImageButton(const char* imagePath, Vector2 position, Size2 size) {
     Image image = LoadImage(imagePath);
     ImageResize(&image, static_cast<int>(size.width), static_cast<int>(size.height));
 
@@ -10,18 +10,18 @@ Button::Button(const char* imagePath, Vector2 position, Size2 size) {
     UnloadImage(image);
 }
 
-Button::Button(const char* imagePath, Vector2 position, float scale) {
+ImageButton::ImageButton(const char* imagePath, Vector2 position, float scale) {
     Image image = LoadImage(imagePath);
     Size2 size{image.width * scale, image.height * scale};
 
     UnloadImage(image);
-    Button(imagePath, position, size);
+    ImageButton(imagePath, position, size);
 }
 
-Button::~Button() {
+ImageButton::~ImageButton() {
     UnloadTexture(m_texture);
 }
 
-void Button::Draw() const {
+void ImageButton::Draw() const {
     DrawTextureV(m_texture, m_position, WHITE);
 }

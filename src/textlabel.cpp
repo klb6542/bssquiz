@@ -9,6 +9,11 @@ TextLabel::TextLabel(const char* text, Font& font, float fontSize, float fontSpa
 TextLabel::TextLabel(const char* text, Font& font, float fontSize, Color tint)
     : TextLabel(text, font, fontSize, 1.0f, tint) {}
 
+
+void TextLabel::SetText(const char* text) {
+    this->m_text = text;
+}
+
 void TextLabel::Draw(WindowPosition windowPosition, Vector2 offset) const {
     Vector2 position = ConvertToPosition(windowPosition) + offset;
 
@@ -27,10 +32,6 @@ void TextLabel::Draw(WindowPosition windowPosition) const {
 
 void TextLabel::Draw(Vector2 position) const {
     Draw(WindowPosition::null, position);
-}
-
-void TextLabel::SetText(const char* text) {
-    this->m_text = text;
 }
 
 int TextLabel::GetWidth() const {

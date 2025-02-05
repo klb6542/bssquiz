@@ -1,17 +1,17 @@
 #pragma once
-#include "window.hpp"
+#include "drawable.hpp"
 #include <raylib.h>
 
-class TextLabel {
+class TextLabel : public IDrawable {
     public:
         TextLabel(const char* text, Font& font, float fontSize, float fontSpacing, Color tint);
         TextLabel(const char* text, Font& font, float fontSize, Color tint);
-        void Draw(WindowPosition windowPosition, Vector2 offset) const;
-        void Draw(WindowPosition windowPosition) const;
-        void Draw(Vector2 position) const;
         void SetText(const char* text);
-        int GetWidth() const;
-        int GetHeight() const;
+        void Draw(WindowPosition windowPosition, Vector2 offset) const override;
+        void Draw(WindowPosition windowPosition) const override;
+        void Draw(Vector2 position) const override;
+        int GetWidth() const override;
+        int GetHeight() const override;
     private:
         const char* m_text;
         Font* m_font;

@@ -14,6 +14,8 @@ add_executable(bssquiz
     src/main.cpp
     src/textlabel.cpp
     src/window.cpp
+    src/game.cpp
+    src/gameasset.cpp
 )
 
 target_link_libraries(bssquiz raylib)

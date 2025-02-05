@@ -1,7 +1,7 @@
 #include "window.hpp"
 #include <raylib.h>
 
-Vector2 operator +(const Vector2 other, const Vector2 other2) {
+Vector2 operator +(const Vector2& other, const Vector2& other2) {
     return Vector2{other.x + other2.x, other.y + other2.y};
 }
 

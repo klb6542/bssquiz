@@ -6,11 +6,11 @@ typedef struct Size2 {
     float height;
 } Size2;
 
-class Button {
+class ImageButton {
     public:
-        Button(const char* imagePath, Vector2 position, Size2 size);
-        Button(const char* imagePath, Vector2 position, float scale);
-        ~Button();
+        ImageButton(const char* imagePath, Vector2 position, Size2 size);
+        ImageButton(const char* imagePath, Vector2 position, float scale);
+        ~ImageButton();
         void Draw() const;
     private:
         Texture2D m_texture;
