@@ -8,10 +8,9 @@ class GameAsset;
 class IGameAsset {
     public:
         virtual ~IGameAsset() = default;
-        virtual void Unload() = 0;
-
 };
 
+// should this have been a namespace? maybe?
 class AssetManager {
     public:
         static AssetManager& GetInstance() {
@@ -42,13 +41,14 @@ class GameAsset : public IGameAsset {
     public:
       GameAsset(const GameAsset&) = delete;
       GameAsset(GameAsset&&) = delete;
-      GameAsset &operator=(const GameAsset&) = delete;
-      GameAsset &operator=(GameAsset&&) = delete;
+      GameAsset& operator=(const GameAsset&) = delete;
+      GameAsset& operator=(GameAsset&&) = delete;
 
       GameAsset(const T& asset, void(*unload)(T));
+      ~GameAsset() override;
+
       T GetAsset();
     private:
-        void Unload();
         T m_asset;
         void(*m_unload)(T);
 };
@@ -59,15 +59,12 @@ GameAsset<T>::GameAsset(const T& asset, void(*unload)(T)) : m_asset(asset), m_un
 }
 
 template <typename T>
-T GameAsset<T>::GetAsset() {
-    return this->m_asset;
+GameAsset<T>::~GameAsset() {
+    this->m_unload(this->m_asset);
+    std::cout << "Unloaded " << typeid(this->m_asset).name() << "\n";
 }
 
 template <typename T>
-void GameAsset<T>::Unload() {
-    std::cout << "Unloaded " << typeid(this->m_asset).name() << "\n";
-    this->m_unload(this->m_asset);
-    delete this;
+T GameAsset<T>::GetAsset() {
+    return this->m_asset;
 }
-
-using s_GameAsset = GameAsset<int>;

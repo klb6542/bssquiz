@@ -5,7 +5,7 @@ void AssetManager::UnloadAllAssets() {
     std::vector<IGameAsset*>* gameAssets = instance.m_gameAssets;
 
     for (IGameAsset* iGameAsset : *gameAssets) {
-        iGameAsset->Unload();
+        delete iGameAsset;
     }
 
     delete gameAssets;
